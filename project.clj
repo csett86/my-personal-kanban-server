@@ -1,4 +1,4 @@
-(defproject my-personal-kanban-local-cloud "0.1.0"
+(defproject my-personal-kanban-local-cloud "0.1.1"
   :description "My Personal Kanban Local Cloud"
   :url "http://my-personal-kanban.appspot.com"
   :license {:name "GNU General Public Licence version 3"
@@ -10,7 +10,7 @@
                  [clj-time "0.15.2"]]
   :plugins [[lein-ring "0.12.5"]]
   :ring {:handler mpk.core/mpk-app}
-  :main mpk.core
-  :prep-tasks[["compile" "mpk.action-handlers"]
-              "javac" "compile"])
-
+  :profiles{
+    :uberjar{
+      :aot :all
+      :main mpk.core}})
